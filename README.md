@@ -10,7 +10,7 @@ This API uses web scraping techniques to obtain the total number of lines and by
 
 ## Version history
 * 1.0.0
-    * Initial release
+    * Initial release (November 16, 2020)
 
 ## Author
 **Marcelo Carrion**
