@@ -61,16 +61,21 @@ public class GithubRepoService
 				else
 				{
 					// branch info retrieved, commit info pending
-					if ((ind = content.indexOf("class=\"link-gray ml-2\"")) != -1)
+					if ((ind = content.indexOf("js-permalink-shortcut")) != -1)
 					{
-						content = content.substring(0, ind);
-						content = content.substring(content.lastIndexOf("/") + 1);
-						lastCommit = content.substring(0, content.indexOf("\""));
+						content = content.substring(ind);
+						content = content.substring(0, content.indexOf("\">"));
+						lastCommit = content.substring(content.lastIndexOf("/") + 1);
 						break;
 					}
 				}
 			}
 			sc.close();
+			
+			if (defaultBranch == null || lastCommit == null)
+			{
+				throw new Exception("could not retrieve repo info");
+			}
 			
 			GithubRepo repoInfo;
 			if (entity.isPresent())
